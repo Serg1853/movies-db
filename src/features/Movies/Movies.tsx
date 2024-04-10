@@ -4,15 +4,14 @@ import { connect } from "react-redux";
 import { MovieCard } from "./MovieCard";
 import styles from "./Movies.module.scss";
 import { useEffect, useState } from "react";
-import { getNowPlaying } from "../../api/tmdb";
-
+import { client } from "../../api/tmdb";
 
 export function MoviesFetch() {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
     async function loadData() {
-      const response = await getNowPlaying();
+      const response = await client.getNowPlaying();
       setMovies(response.results);
     }
     loadData();
