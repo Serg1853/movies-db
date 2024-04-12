@@ -3,13 +3,12 @@ async function get(relativeUrl: string) {
     method: "GET",
     headers: {
       accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MDc1YTZkMDQ0NTMxMGNhMTI5NDlhYzA0MTBlNDllMCIsInN1YiI6IjY2MTZjZGZmODU4Njc4MDE0YWM2MjViYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ._BYRtOTDR3rksCvRNLC0FpEehVfHBr-77Lg5pLJjXZQ",
+      Authorization: `Bearer ${process.env.REACT_APP_API_TOKEN}`,
     },
   };
 
   const response = await fetch(
-    `https://api.themoviedb.org/3${relativeUrl}`,
+    `${process.env.REACT_APP_API_URL}/3${relativeUrl}`,
     options
   );
   const json = response.json();
